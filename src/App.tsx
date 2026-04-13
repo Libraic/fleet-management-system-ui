@@ -1,9 +1,10 @@
-export default function App() {
+import { VehicleRegistrationPage } from "./pages/VehicleRegistrationPage.tsx";
+import { ToastProvider } from "./ui/Toast/ToastProvider.tsx";
+
+export const App = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">
-        Hello, Tailwind + React + TypeScript!
-      </h1>
-    </div>
+    <ToastProvider>
+      <VehicleRegistrationPage />
+    </ToastProvider>
   );
-}
+};

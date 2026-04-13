@@ -1,0 +1,51 @@
+import type { Vehicle, VehicleErrors } from "../features/vehicles/types/vehicle.types.ts";
+import { useState } from "react";
+import { VehicleInputForm } from "../features/vehicles/components/Registration/VehicleInputForm.tsx";
+import { VehicleInputFormHeader } from "../features/vehicles/components/Registration/VehicleInputFormHeader.tsx";
+import { validateVehicle } from "../features/vehicles/validator/vehicle.validator.ts";
+import { createVehicle } from "../features/vehicles/api/vehicles.api.ts";
+import { useToast } from "../ui/Toast/useToast.ts";
+import { handleApiError } from "../shared/api/api.utils.ts";
+import type { ApiError } from "../shared/api/api.types.ts";
+import { SubmitButton } from "../ui/Button/SubmitButton.tsx";
+
+export const VehicleRegistrationPage = () => {
+  const [vehicle, setVehicle] = useState<Vehicle>({});
+  const [validationErrors, setValidationErrors] = useState<VehicleErrors>({});
+  const { showToast } = useToast();
+
+  const submitVehicle = async (vehicle: Vehicle) => {
+    const validationErrors = validateVehicle(vehicle);
+    if (Object.keys(validationErrors).length > 0) {
+      setValidationErrors(validationErrors);
+      return;
+    }
+
+    const result = await createVehicle(vehicle);
+
+    if (!result.isOk) {
+      const error = result.data as ApiError;
+      handleApiError({
+        error: error,
+        setFieldErrors: setValidationErrors,
+        showToast,
+      });
+      return;
+    }
+
+    setVehicle({});
+    setValidationErrors({});
+  };
+
+  return (
+    <div className="w-screen h-screen flex flex-col gap-10 items-center">
+      <VehicleInputFormHeader />
+      <VehicleInputForm
+        vehicle={vehicle}
+        setVehicle={setVehicle}
+        validationErrors={validationErrors}
+      />
+      <SubmitButton action={() => submitVehicle(vehicle)} />
+    </div>
+  );
+};
