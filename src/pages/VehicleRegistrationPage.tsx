@@ -7,12 +7,16 @@ import { createVehicle } from "../features/vehicles/api/vehicles.api.ts";
 import { useToast } from "../ui/Toast/useToast.ts";
 import { handleApiError } from "../shared/api/api.utils.ts";
 import type { ApiError } from "../shared/api/api.types.ts";
-import { SubmitButton } from "../ui/Button/SubmitButton.tsx";
+import { SubmitButton } from "../ui/Button/Submit/SubmitButton.tsx";
+import { CancelButton } from "../ui/Button/Cancel/CancelButton.tsx";
+import { useNavigate } from "react-router-dom";
+import { HOME } from "../routes/paths.ts";
 
 export const VehicleRegistrationPage = () => {
   const [vehicle, setVehicle] = useState<Vehicle>({});
   const [validationErrors, setValidationErrors] = useState<VehicleErrors>({});
   const { showToast } = useToast();
+  const navigate = useNavigate();
 
   const submitVehicle = async (vehicle: Vehicle) => {
     const validationErrors = validateVehicle(vehicle);
@@ -45,7 +49,10 @@ export const VehicleRegistrationPage = () => {
         setVehicle={setVehicle}
         validationErrors={validationErrors}
       />
-      <SubmitButton action={() => submitVehicle(vehicle)} />
+      <div className="flex justify-center items-center flex-row gap-x-10">
+        <SubmitButton action={() => submitVehicle(vehicle)} />
+        <CancelButton action={() => navigate(HOME)} />
+      </div>
     </div>
   );
 };

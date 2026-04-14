@@ -1,10 +1,10 @@
-import { VehicleRegistrationPage } from "./pages/VehicleRegistrationPage.tsx";
 import { ToastProvider } from "./ui/Toast/ToastProvider.tsx";
+import { AppRoutes } from "./routes/AppRoutes.tsx";
 
 export const App = () => {
   return (
     <ToastProvider>
-      <VehicleRegistrationPage />
+      <AppRoutes />
     </ToastProvider>
   );
 };
