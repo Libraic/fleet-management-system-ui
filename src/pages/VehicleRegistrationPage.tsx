@@ -42,7 +42,7 @@ export const VehicleRegistrationPage = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col gap-10 items-center">
+    <div className="w-full flex flex-col gap-10 items-center">
       <VehicleInputFormHeader />
       <VehicleInputForm
         vehicle={vehicle}
