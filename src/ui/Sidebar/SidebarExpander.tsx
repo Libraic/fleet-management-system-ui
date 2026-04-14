@@ -13,6 +13,7 @@ export const SidebarExpander: React.FC<SidebarExpanderProps> = ({ isCollapsed, s
             flex items-center justify-center
             p-3 rounded-lg
             hover:bg-gray-200 transition
+            hover:cursor-pointer
           "
       >
         <MenuOpenIcon
