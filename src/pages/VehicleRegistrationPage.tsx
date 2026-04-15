@@ -9,11 +9,14 @@ import { handleApiError } from "../shared/api/api.utils.ts";
 import type { ApiError } from "../shared/api/api.types.ts";
 import { SubmitButton } from "../ui/Button/Submit/SubmitButton.tsx";
 import { CancelButton } from "../ui/Button/Cancel/CancelButton.tsx";
+import { useNavigate } from "react-router-dom";
+import { VEHICLES } from "../routes/paths.ts";
 
 export const VehicleRegistrationPage = () => {
   const [vehicle, setVehicle] = useState<Vehicle>({});
   const [validationErrors, setValidationErrors] = useState<VehicleErrors>({});
   const { showToast } = useToast();
+  const navigate = useNavigate();
 
   const submitVehicle = async (vehicle: Vehicle) => {
     const validationErrors = validateVehicle(vehicle);
@@ -36,6 +39,7 @@ export const VehicleRegistrationPage = () => {
 
     setVehicle({});
     setValidationErrors({});
+    navigate(VEHICLES);
   };
 
   return (
@@ -47,11 +51,8 @@ export const VehicleRegistrationPage = () => {
         validationErrors={validationErrors}
       />
       <div className="flex justify-center items-center flex-row gap-x-10">
-        <SubmitButton action={() => submitVehicle(vehicle)} />
-        <CancelButton action={() => {
-          setVehicle({});
-          setValidationErrors({});
-        }} />
+        <SubmitButton action={() => submitVehicle(vehicle)} label="Înregistrează"/>
+        <CancelButton action={() => navigate(VEHICLES)} />
       </div>
     </div>
   );

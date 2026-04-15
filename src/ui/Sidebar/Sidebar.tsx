@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import DirectionsCarOutlinedIcon from "@mui/icons-material/DirectionsCarOutlined";
-import { HOME, VEHICLES_REGISTRATION } from "../../routes/paths";
+import { HOME, VEHICLES } from "../../routes/paths";
 import { SidebarItem } from "./SidebarItem.tsx";
 import { useState } from "react";
 import { SidebarExpander } from "./SidebarExpander.tsx";
@@ -26,7 +26,7 @@ export const Sidebar = () => {
 
       <SidebarItem
         icon={<HomeOutlinedIcon fontSize="small" />}
-        label="Acasă"
+        label="Bord"
         active={isActive(HOME)}
         collapsed={collapsed}
         onClick={() => navigate(HOME)}
@@ -34,10 +34,10 @@ export const Sidebar = () => {
 
       <SidebarItem
         icon={<DirectionsCarOutlinedIcon fontSize="small" />}
-        label="Înregistrare Vehicule"
-        active={isActive(VEHICLES_REGISTRATION)}
+        label="Vehicule"
+        active={isActive(VEHICLES)}
         collapsed={collapsed}
-        onClick={() => navigate(VEHICLES_REGISTRATION)}
+        onClick={() => navigate(VEHICLES)}
       />
     </aside>
   );

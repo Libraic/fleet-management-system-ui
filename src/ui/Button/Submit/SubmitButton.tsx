@@ -1,7 +1,7 @@
 import type { SubmitButtonProps } from "./SubmitButton.types.ts";
 import React from "react";
 
-export const SubmitButton: React.FC<SubmitButtonProps> = ({ action }) => {
+export const SubmitButton: React.FC<SubmitButtonProps> = ({ action, label }) => {
   return (
     <div
       className="
@@ -12,7 +12,7 @@ export const SubmitButton: React.FC<SubmitButtonProps> = ({ action }) => {
       "
       onClick={action}
     >
-      Creează
+      {label ?? "Aplică"}
     </div>
   );
 };

@@ -16,3 +16,11 @@ export interface HandleApiErrorOptions<TFieldErrors> {
   setFieldErrors?: (errors: TFieldErrors) => void;
   showToast: (message: string) => void;
 }
+
+export interface PageResponse<T> {
+  content: T[];
+  page: number;
+  size: number;
+  totalElements: number;
+  totalPages: number;
+}

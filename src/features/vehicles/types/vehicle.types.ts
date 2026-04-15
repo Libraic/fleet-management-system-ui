@@ -23,3 +23,12 @@ export interface UpsertVehicleRequest {
 export interface UpsertVehicleResponse {
   id: string;
 }
+
+export interface GetVehicleResponse {
+  id: string;
+  make: string;
+  model: string;
+  registrationNumber: string;
+  mileage: number;
+  status?: string;
+}
