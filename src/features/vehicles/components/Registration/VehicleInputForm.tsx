@@ -46,6 +46,28 @@ export const VehicleInputForm: React.FC<VehicleInputFormProps> = ({ vehicle, set
           sanitizeFn={sanitizeMileage}
           errorMessage={validationErrors.mileage}
         />
+        <Input
+          label="Parcursul la ultima revizie (km)"
+          placeholder="75,000"
+          value={vehicle.lastServiceMileage}
+          setValue={(value: string) =>
+            setVehicle((prev) => ({ ...prev, lastServiceMileage: value }))
+          }
+          formatFn={formatMileage}
+          sanitizeFn={sanitizeMileage}
+          errorMessage={validationErrors.lastServiceMileage}
+        />
+        <Input
+          label="Intervalul pentru revizie (km)"
+          placeholder="10,000"
+          value={vehicle.serviceIntervalMileage}
+          setValue={(value: string) =>
+            setVehicle((prev) => ({ ...prev, serviceIntervalMileage: value }))
+          }
+          formatFn={formatMileage}
+          sanitizeFn={sanitizeMileage}
+          errorMessage={validationErrors.serviceIntervalMileage}
+        />
       </div>
     </div>
   );

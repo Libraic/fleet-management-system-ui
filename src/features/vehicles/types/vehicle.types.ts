@@ -3,6 +3,8 @@ export interface Vehicle {
   model?: string;
   registrationNumber?: string;
   mileage?: string;
+  lastServiceMileage?: string;
+  serviceIntervalMileage?: string;
 }
 
 export interface VehicleErrors {
@@ -10,6 +12,8 @@ export interface VehicleErrors {
   model?: string;
   registrationNumber?: string;
   mileage?: string;
+  lastServiceMileage?: string;
+  serviceIntervalMileage?: string;
 }
 
 export interface UpsertVehicleRequest {
@@ -18,6 +22,8 @@ export interface UpsertVehicleRequest {
   model?: string;
   registrationNumber?: string;
   mileage?: number;
+  lastServiceMileage?: number;
+  serviceIntervalMileage?: number;
 }
 
 export interface UpsertVehicleResponse {
@@ -30,5 +36,7 @@ export interface GetVehicleResponse {
   model: string;
   registrationNumber: string;
   mileage: number;
+  lastServiceMileage: string;
+  serviceIntervalMileage: string;
   status?: string;
 }

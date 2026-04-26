@@ -6,5 +6,7 @@ export const toUpsertVehicleRequest = (vehicle: Vehicle): UpsertVehicleRequest =
     model: vehicle.model,
     registrationNumber: vehicle.registrationNumber,
     mileage: vehicle.mileage ? Number(vehicle.mileage) : undefined,
+    lastServiceMileage: vehicle.lastServiceMileage ? Number(vehicle.lastServiceMileage) : undefined,
+    serviceIntervalMileage: vehicle.serviceIntervalMileage ? Number(vehicle.serviceIntervalMileage) : undefined,
   };
 };

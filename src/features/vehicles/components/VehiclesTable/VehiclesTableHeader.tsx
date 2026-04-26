@@ -7,6 +7,8 @@ export const VehiclesTableHeader = () => {
         <th className="px-6 py-3">Număr de înmatriculare</th>
         <th className="px-6 py-3">Statut</th>
         <th className="px-6 py-3">Parcurs (km)</th>
+        <th className="px-6 py-3">Parcursul la ultima revizie (km)</th>
+        <th className="px-6 py-3">Intervalul de revizie (km)</th>
       </tr>
     </thead>
   );

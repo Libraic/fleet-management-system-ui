@@ -20,5 +20,17 @@ export const validateVehicle = (vehicle: Vehicle): VehicleErrors => {
     vehicleErrors.mileage = "Formatul parcursului este invalid";
   }
 
+  if (!vehicle.lastServiceMileage) {
+    vehicleErrors.lastServiceMileage = "Parcursul la ultima revizie este obligatoriu";
+  } else if (parseInt(vehicle.lastServiceMileage) < 0) {
+    vehicleErrors.lastServiceMileage = "Formatul parcursului este invalid";
+  }
+
+  if (!vehicle.serviceIntervalMileage) {
+    vehicleErrors.serviceIntervalMileage = "Intervalul de revizie este obligatoriu";
+  } else if (parseInt(vehicle.serviceIntervalMileage) < 0) {
+    vehicleErrors.serviceIntervalMileage = "Formatul parcursului este invalid";
+  }
+
   return vehicleErrors;
 }
